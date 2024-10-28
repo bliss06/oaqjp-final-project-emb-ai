@@ -14,9 +14,10 @@ def emotion_detector(text_to_analyse):
     # Make a POST request to the API with the payload and headers
     response = requests.post(url, json=myobj, headers=header)
 
+    print(response)
+
     # Parse the response from the API
     formatted_response = json.loads(response.text)
-    print(formatted_response['emotionPredictions'][0]['emotion'])
 
     # If the response status code is 200, extract the label and score from the response
     if response.status_code == 200:
@@ -44,5 +45,5 @@ def emotion_detector(text_to_analyse):
         result = {}
 
     # Return the label and score in a dictionary
-    return result
+    return {}
     
