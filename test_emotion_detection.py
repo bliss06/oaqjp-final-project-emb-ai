@@ -6,14 +6,15 @@ class TestEmotionDetector(unittest.TestCase):
     def test_joy(self):
         statement = "I am glad this happened"
         expected_emotion = "joy"
-        result = emotion_detector(statement)["dominant_emotion"]
+        response = emotion_detector(statement)
+        result = response["dominant_emotion"]
+        
         self.assertEqual(result, expected_emotion)
 
     def test_anger(self):
         statement = "I am really mad about this"
         expected_emotion = "anger"
         result = emotion_detector(statement)["dominant_emotion"]
-        print(result)
         self.assertEqual(result, expected_emotion)
 
     def test_disgust(self):
