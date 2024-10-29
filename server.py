@@ -12,12 +12,14 @@ def runAnalysis():
     # Pass the text to the sentiment_analyzer function and store the response
     response = emotion_detector(text_to_analyze)
 
+    print(response)
+    anger_score, disgust_score, sadness_score, fear_score, joy_score, dominant_emotion = response["anger"], response["disgust"], response["sadness"], response["fear"], response["joy"], response["dominant_emotion"]
+    
     # Check if the label is None, indicating an error or invalid input
-    if not text_to_analyze:
-        return "Invalid input! Try again."
+    if text_to_analyze == "" or dominant_emotion == None:
+        return "Invalid text! Please try again!."
     else:
         # Extract the scores and dominant emotion
-        anger_score, disgust_score, sadness_score, fear_score, joy_score, dominant_emotion = response["anger"], response["disgust"], response["sadness"], response["fear"], response["joy"], response["dominant_emotion"]
         response_string = f"For the given statement, the system response is 'anger': {anger_score}, 'disgust': {disgust_score}, 'fear': {fear_score}, 'joy': {joy_score} and 'sadness': {sadness_score}. The dominant emotion is {dominant_emotion}."
         return response_string
 
